@@ -1,43 +1,53 @@
 # Pockey
 
-A lighter / stripped-down split keyboard PCB. (Formerly named "OrthusLight" — renamed to Pockey.)
+A lighter, stripped-down split keyboard PCB — a smaller-footprint sibling to [Orthus](https://github.com/Hob-dev/Orthus) without the trackpad, display, speaker, or extras. Just keys.
+
+(Formerly named "OrthusLight" — renamed to Pockey before this repo was published.)
+
+![Pockey CAD render](Renders/Pockey_2025-Jan-21_09-31-27AM-000_CustomizedView40067042240_png.png)
+
+## Overview
+
+Pockey is a 6×5 ortholinear half intended for Kailh Choc switches. The render above shows one half of the split with switches mounted, no keycaps yet, sitting in a low-profile aluminum-style case. The board outline is generated from `Fabrication/PockeyPCBOutlineV3.dxf` (V2 is the previous revision, kept for reference).
 
 ## Status
 
-**Functionally complete** — just a few finishing touches remaining before release.
+**Functionally complete** — finishing touches remain before fabrication (see "Known gaps" below).
 
-## ⚠️ Schematic recovery note
+## Schematic recovery note
 
-The `Pockey.kicad_sch` (originally `OrthusLight.kicad_sch`) and `LeftMatrix.kicad_sch` files were **missing** from the working directory — they were lost sometime after January 2025 and the three most recent backups (dated 2026-04-16) no longer contained them either.
+`Pockey.kicad_sch` (originally `OrthusLight.kicad_sch`) and `LeftMatrix.kicad_sch` were **missing** from the working directory at the time this repo was created — they were lost sometime after January 2025, and the three most recent backups (dated 2026-04-16) no longer contained them either.
 
-They have been **restored from** `KiCad/backups/Pockey-2025-01-22_173850.zip` — the last backup that still contained the real schematic files. The restored schematic is dated **2025-01-20 14:26** internally. If you did any schematic work between that date and when the file went missing, those changes are not recovered.
+They were **restored from** `KiCad/backups/Pockey-2025-01-22_173850.zip` — the last backup that still contained the real schematic files. The restored schematic is dated **2025-01-20 14:26** internally. Any schematic edits between that date and when the file went missing are not recoverable.
 
-## Folder structure
+## Folder layout
 
 ```
 Pockey/
-├── KiCad/
-│   ├── Pockey.kicad_pro / .kicad_pcb / .kicad_prl    Main project
-│   ├── Pockey.kicad_sch                              (restored from backup)
-│   ├── LeftMatrix.kicad_sch                          (restored from backup)
-│   ├── fp-info-cache
-│   ├── backups/           Kept 4 dated snapshots (including the one the schematic was recovered from)
-│   └── Pockey-backups/    KiCad auto-backup folder (one zip, created on project reopen)
-├── Renders/               Pockey_2025-Jan-21 3D CAD render
-├── 3D/                    Pockey.step case model
-├── Fabrication/           PockeyPCBOutlineV2.dxf, V3.dxf (PCB outline)
-└── JLCPCB/                (empty — see "What's missing" below)
+├── KiCad/              KiCad 7+ project — open Pockey.kicad_pro
+│   ├── Pockey.kicad_pcb         Main board layout
+│   ├── Pockey.kicad_sch         Top-level schematic (restored from backup)
+│   ├── LeftMatrix.kicad_sch     Switch matrix sub-sheet (restored from backup)
+│   ├── Pockey.kicad_pro         KiCad project file
+│   ├── Pockey.kicad_prl         Local KiCad state
+│   ├── fp-info-cache            KiCad footprint cache
+│   ├── backups/                 Dated snapshots — incl. the one the schematic was recovered from
+│   └── Pockey-backups/          KiCad auto-backup folder (created on project reopen)
+├── Renders/            Pockey_2025-Jan-21 CAD render of populated PCB
+├── 3D/                 Pockey.step — mechanical model of the board + case
+├── Fabrication/        PCB outline DXFs (V2 = previous, V3 = current)
+└── JLCPCB/             Empty — gerbers not yet generated
 ```
 
-## What's missing / potentially missing
+## Known gaps
 
 - **No gerbers / JLCPCB order files.** `JLCPCB/` is an empty placeholder.
 - **No BOM / pick-and-place files.**
-- **Very few renders** — only a single CAD export from Jan 2025. No WIP/product photos.
-- **No STL files** for a printed case — only the `.step` source is included.
-- **No sub-schematic for LeftMatrix's .kicad_pro** — only the sch file was recovered.
-- **Original Mac-metadata `._*` AppleDouble files and three "bad" 2026-04-16 backup zips** that did not contain the real schematic were intentionally excluded when copying here.
+- **Only one render** — the Jan 2025 CAD export above. No WIP photos, no rendered keycap variants.
+- **No printable case STLs** — only the `.step` source is included.
+- **No sub-schematic kicad_pro for `LeftMatrix`** — only the `.sch` file was recovered.
+- **Excluded from the copy:** macOS `._*` AppleDouble metadata files and the three "bad" 2026-04-16 backup zips that did not contain the real schematic.
 
 ## Original source
 
-All files were copied from `Custom/Ergomania/OrthusLight/` and renamed from `OrthusLight*` → `Pockey*`. The original folder is still intact at that location under its original name.
+All files were copied from `Custom/Ergomania/OrthusLight/` and renamed `OrthusLight*` → `Pockey*`. The original folder is preserved at that location under its original name.
